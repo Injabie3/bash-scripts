@@ -28,6 +28,6 @@ do
     wget -O "$LOCAL_DATA_PATH/$privateId/$privateId-$currentDate.png" https://deresute.me/$privateId/huge
     [ ! -d $PUB_PATH ] && mkdir $PUB_PATH
     [ ! -d $PUB_PATH/$privateId ] && mkdir $PUB_PATH/$privateId
-    cp "$LOCAL_DATA_PATH/$privateId/$privateId-$currentDate.png" $PUB_PATH/$privateId/
+    cp "$LOCAL_DATA_PATH/$privateId/$privateId-$currentDate.png" $PUB_PATH/$privateId/banner.png
 done
 
