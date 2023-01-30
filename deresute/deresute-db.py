@@ -123,7 +123,7 @@ class DeresuteUserData:
                   lookup["exp"],
                   lookup["star_rank"],
                   lookup["skill_level"],
-                  lookup["image_id"],
+                  lookup.get("image_id", -1),
                   lookup["potential"]["vocal"],
                   lookup["potential"]["dance"],
                   lookup["potential"]["visual"],
