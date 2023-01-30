@@ -32,7 +32,7 @@ class DeresuteUserData:
             self.content = json.load(fileHandle)
         self.filename: str = filename
         self.logger: logging.Logger = logging.getLogger("DeresuteDb")
-        self.timestamp = datetime.datetime.fromtimestamp(self.content["timestamp"])
+        self.timestamp = datetime.datetime.utcfromtimestamp(self.content["timestamp"])
         self.db  = None
         self.cursor = None
 
@@ -61,7 +61,7 @@ class DeresuteUserData:
                  "(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s )")
         values = (self.content["id"],
                   self.timestamp,
-                  datetime.datetime.fromtimestamp(self.content["last_login_ts"]),
+                  datetime.datetime.utcfromtimestamp(self.content["last_login_ts"]),
                   self.content["level"],
                   self.content["fan"],
                   self.content["prp"],
