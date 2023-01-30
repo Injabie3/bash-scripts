@@ -28,8 +28,15 @@ class DeresuteUserData:
     """This class is for loading one JSON file from deresute.me"""
 
     def __init__(self, filename: str) -> None:
+        self.content = None
         with open(filename, "r") as fileHandle:
-            self.content = json.load(fileHandle)
+            try:
+                self.content = json.load(fileHandle)
+            except json.decoder.JSONDecodeError:
+                raise
+        if "error" in self.content:
+            raise ValueError( "Error in JSON file!")
+
         self.filename: str = filename
         self.logger: logging.Logger = logging.getLogger("DeresuteDb")
         self.timestamp = datetime.datetime.utcfromtimestamp(self.content["timestamp"])
@@ -195,5 +202,10 @@ if __name__ == "__main__":
         filelist = [ args.file ]
 
     for jsonFilePath in filelist:
-        deresute = DeresuteUserData(jsonFilePath)
-        deresute.saveToDb()
+        try:
+            deresute = DeresuteUserData(jsonFilePath)
+            deresute.saveToDb()
+        except json.decoder.JSONDecodeError:
+            logger.error("%s could not be loaded, skipping", jsonFilePath)
+        except ValueError:
+            logger.error("%s has an error, skipping", jsonFilePath)
