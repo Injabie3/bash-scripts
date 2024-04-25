@@ -39,3 +39,4 @@ chown rslsync:resiliosync ${rslsyncCertDir}/cert.pem
 chown rslsync:resiliosync ${rslsyncCertDir}/privkey.pem
 chmod 600 ${rslsyncCertDir}/cert.pem
 chmod 600 ${rslsyncCertDir}/privkey.pem
+synopkg restart resiliosync
