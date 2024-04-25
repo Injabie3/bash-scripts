@@ -17,7 +17,7 @@
 # 3. Ensure your sync.conf file has the following keys set in the webui section:
 #    "force_https": true,
 #    "ssl_certificate": "/volume1/@appstore/resiliosync/var/cert/cert.pem",
-#    "ssl_private_key": "/volume1/@appstore/resiliosync/var//cert/privkey.pem"
+#    "ssl_private_key": "/volume1/@appstore/resiliosync/var/cert/privkey.pem"
 #
 #    On DSM 7 and Resilio Sync 2.7.3, if Resilio Sync is installed on Volume 1, then
 #    this file is located at: `/volume1/@appstore/resiliosync/var/`.
