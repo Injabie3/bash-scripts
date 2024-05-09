@@ -33,6 +33,8 @@ export rslsyncCertDir=/volume1/@appstore/resiliosync/var/cert
 
 # Here's the actual script
 ${acmeShRoot}/acme.sh --renew -d "${fqdnForNas}" --home ${acmeShRoot}
+mkdir -p ${rslsyncCertDir}
+chown rslsync:resiliosync ${rslsyncCertDir}
 cp ${synologyCertDir}/cert.pem ${rslsyncCertDir}/cert.pem
 cp ${synologyCertDir}/privkey.pem ${rslsyncCertDir}/privkey.pem
 chown rslsync:resiliosync ${rslsyncCertDir}/cert.pem
