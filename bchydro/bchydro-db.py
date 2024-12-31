@@ -33,8 +33,12 @@ PowerData = namedtuple(
     (
         "user",
         "accId",
+        "meterNum",
         "timestamp",
-        "usage",
+        "timeOfDayPeriod",
+        "inflow",
+        "outflow",
+        "netConsumption",
         "demand",
         "powerFactor",
         "estUsage",
@@ -89,11 +93,11 @@ class BcHydroData:
         self.logger.info("Saving hourly data")
         for row in self.data:
             try:
-                usage = float(row.usage)
+                usage = float(row.netConsumption)
             except ValueError:
                 self.logger.error(
                     "Unable to convert usage to float, got %s, " "skipping %s",
-                    row.usage,
+                    row.netConsumption,
                     row.timestamp,
                 )
                 continue
